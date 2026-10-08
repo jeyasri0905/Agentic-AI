@@ -1,0 +1,23 @@
+{
+  "name": "calculator",
+  "description": "Performs basic arithmetic operations between two numbers: addition, subtraction, multiplication, division, and exponentiation.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "operation": {
+        "type": "STRING",
+        "description": "The arithmetic operation to perform.",
+        "enum": ["add", "subtract", "multiply", "divide", "power"]
+      },
+      "a": {
+        "type": "NUMBER",
+        "description": "The first number (left operand)."
+      },
+      "b": {
+        "type": "NUMBER",
+        "description": "The second number (right operand)."
+      }
+    },
+    "required": ["operation", "a", "b"]
+  }
+}

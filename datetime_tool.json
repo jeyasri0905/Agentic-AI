@@ -1,0 +1,13 @@
+{
+  "name": "get_current_datetime",
+  "description": "Gets the current live date, time, day of the week, and timezone. Use whenever the user asks for the current time, today's date, day of week, or current year.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "timezone": {
+        "type": "STRING",
+        "description": "Optional timezone, e.g. 'local' or 'UTC'. Defaults to 'local'."
+      }
+    }
+  }
+}

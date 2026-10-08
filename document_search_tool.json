@@ -1,0 +1,18 @@
+{
+  "name": "document_search",
+  "description": "Searches local documents, text files, and notes in the documents directory for matching keywords, topics, or content.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "query": {
+        "type": "STRING",
+        "description": "The keyword, phrase, or topic to search for in local documents."
+      },
+      "filename_filter": {
+        "type": "STRING",
+        "description": "Optional specific filename to search within (e.g. 'company_policy.txt' or '*.md'). If omitted, searches all documents."
+      }
+    },
+    "required": ["query"]
+  }
+}

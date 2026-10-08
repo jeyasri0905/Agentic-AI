@@ -1,0 +1,14 @@
+{
+  "name": "web_search",
+  "description": "Searches the web for up-to-date information, facts, definitions, current events, or general knowledge.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "query": {
+        "type": "STRING",
+        "description": "The search query string to look up on the web."
+      }
+    },
+    "required": ["query"]
+  }
+}

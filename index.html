@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic AI - Multi-Tool ReAct & RAG Studio</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-icon">🤖</div>
+        <div class="logo-text">
+          <h2>Agentic AI</h2>
+          <span>Studio v2.0</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <label class="section-label">AGENT MODE</label>
+        <div class="mode-switcher">
+          <button class="mode-btn active" id="mode-react" onclick="switchMode('react')">
+            <span class="btn-icon">⚡</span>
+            <div class="btn-info">
+              <strong>ReAct Agent</strong>
+              <small>Reason + Act (4 Tools)</small>
+            </div>
+          </button>
+          <button class="mode-btn" id="mode-rag" onclick="switchMode('rag')">
+            <span class="btn-icon">📚</span>
+            <div class="btn-info">
+              <strong>Student RAG</strong>
+              <small>Vector Search (25 Students)</small>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <label class="section-label">GOOGLE GEMINI API KEY</label>
+        <div class="api-key-box">
+          <input type="password" id="api-key-input" placeholder="Paste your API key here..." onchange="saveApiKey()" />
+          <button type="button" class="key-save-btn" onclick="saveApiKey()">Save</button>
+        </div>
+        <small class="key-hint">Saved securely in browser localStorage</small>
+      </div>
+
+      <div class="sidebar-section">
+        <label class="section-label">ACTIVE TOOLS (JSON FORMAT)</label>
+        <div class="tools-list">
+          <div class="tool-badge">
+            <span class="tool-dot calc"></span>
+            <div><strong>calculate</strong><small>Arithmetic & AST Math</small></div>
+          </div>
+          <div class="tool-badge">
+            <span class="tool-dot search"></span>
+            <div><strong>web_search</strong><small>Live Internet Facts</small></div>
+          </div>
+          <div class="tool-badge">
+            <span class="tool-dot time"></span>
+            <div><strong>get_current_datetime</strong><small>System Clock & Calendar</small></div>
+          </div>
+          <div class="tool-badge">
+            <span class="tool-dot doc"></span>
+            <div><strong>document_search</strong><small>Local Files & Policies</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <label class="section-label">QUICK PROMPTS</label>
+        <div class="quick-prompts" id="quick-prompts-container">
+          <!-- Populated by JS based on active mode -->
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="clear-btn" onclick="clearChat()">🗑️ Clear Conversation</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <header class="chat-header">
+        <div class="header-status">
+          <span class="status-indicator online"></span>
+          <span id="current-mode-label">Mode: ReAct Multi-Tool Agent</span>
+        </div>
+        <div class="header-meta">
+          <span class="pill">Backend: Pure Python</span>
+          <span class="pill model-pill">Model: Gemini 3.5 Flash Lite</span>
+        </div>
+      </header>
+
+      <!-- Message History Container -->
+      <div class="chat-messages" id="chat-messages">
+        <div class="welcome-card">
+          <div class="welcome-icon">👋</div>
+          <h3>Welcome to your Agentic AI Workspace!</h3>
+          <p>This full-stack interface connects to your zero-framework Python backend. Type any calculation, live web question, document query, or student RAG search.</p>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <footer class="chat-input-bar">
+        <form id="chat-form" onsubmit="handleSend(event)">
+          <div class="input-wrapper">
+            <textarea 
+              id="user-input" 
+              placeholder="Ask a question or enter a command (e.g., 'What is 154 * 23?' or 'What is Priya Sharma's attendance?')..." 
+              rows="1" 
+              onkeydown="handleKeyDown(event)"
+            ></textarea>
+            <button type="submit" id="send-btn" class="send-btn">
+              <span>Send</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </div>
+        </form>
+      </footer>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
